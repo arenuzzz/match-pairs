@@ -13,5 +13,19 @@ export default function configureStore(inititialState = {}, history) {
 
   const enhancers = [applyMiddleware(...middlewares), devTools()];
 
-  return createStore(reducerWithHistory, inititialState, compose(...enhancers));
+  const store = createStore(
+    reducerWithHistory,
+    inititialState,
+    compose(...enhancers)
+  );
+
+  if (process.env.NODE_ENV !== "production") {
+    if (module.hot) {
+      module.hot.accept("../reducers", () => {
+        store.replaceReducer(rootReducer);
+      });
+    }
+  }
+
+  return store;
 }

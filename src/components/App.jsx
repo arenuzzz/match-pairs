@@ -1,13 +1,14 @@
 import React from "react";
-import "./App.css";
+// import { Link } from "react-router-dom";
+import routes from "../routes";
+
+import styles from "./App.module.css";
 
 export default () => (
-  <div className="App">
-    <header className="App-header">
-      <h1 className="App-title">Welcome to React</h1>
+  <div className={styles.root}>
+    <header className={styles.header}>
+      <h1 className={styles.title}>Matching pairs</h1>
     </header>
-    <p className="App-intro">
-      To get started, edit <code>src/App.js</code> and save to reload.
-    </p>
+    <div className={styles.children}>{routes}</div>
   </div>
 );
