@@ -1,12 +1,20 @@
 import React, { Component } from "react";
-// import { connect } from "react-redux";
+import { connect } from "react-redux";
 
-import Board from "../components/Board";
+import { startGame } from "../actions";
+
+import GameBoard from "./GameBoard";
 
 class GamePage extends Component {
+  componentDidMount() {
+    this.props.startGame();
+  }
   render() {
-    return <Board />;
+    return <GameBoard />;
   }
 }
 
-export default GamePage;
+export default connect(
+  null,
+  { startGame }
+)(GamePage);

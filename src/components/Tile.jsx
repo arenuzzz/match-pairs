@@ -6,7 +6,16 @@ export default class Tile extends Component {
   handleReveal = () => {};
 
   render() {
-    console.log(styles.tile);
-    return <div className={styles.tile} onClick={this.handleReveal} />;
+    const { width, height, photoSrc, isFind = true } = this.props;
+
+    return (
+      <div
+        className={isFind ? styles.tile : styles.tile_closed}
+        onClick={this.handleReveal}
+        style={{ width, height }}
+      >
+        {isFind && <img src={photoSrc} className={styles.img} alt="#" />}
+      </div>
+    );
   }
 }

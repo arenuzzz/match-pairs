@@ -1,12 +1,15 @@
 import { createStore, applyMiddleware, compose } from "redux";
-import { connectRouter, routerMiddleware } from "connected-react-router";
+import {
+  connectRouter,
+  routerMiddleware
+} from "connected-react-router/immutable";
 import thunk from "redux-thunk";
 
 import rootReducer from "../reducers";
 
 const devTools = window.devToolsExtension || (() => undefined);
 
-export default function configureStore(inititialState = {}, history) {
+export default function configureStore(initialState, history) {
   const reducerWithHistory = connectRouter(history)(rootReducer);
 
   const middlewares = [thunk, routerMiddleware(history)];
@@ -15,14 +18,14 @@ export default function configureStore(inititialState = {}, history) {
 
   const store = createStore(
     reducerWithHistory,
-    inititialState,
+    initialState,
     compose(...enhancers)
   );
 
   if (process.env.NODE_ENV !== "production") {
     if (module.hot) {
       module.hot.accept("../reducers", () => {
-        store.replaceReducer(rootReducer);
+        store.replaceReducer(connectRouter(history)(rootReducer));
       });
     }
   }
