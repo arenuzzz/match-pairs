@@ -1,31 +1,33 @@
-let duplicate = true;
 let photo = {};
+let duplicate = true;
 
-export function setPhotoPairs({ width, height }) {
+export function setPhotoPairs(size, photoIds) {
   if (duplicate) {
     duplicate = !duplicate;
-    return getPhoto(width, height);
+    photo = getPhoto(size, photoIds);
+
+    return photo;
   } else {
     duplicate = !duplicate;
+
     return photo;
   }
 }
 
-function getPhoto(width, height) {
-  const photoId = getNewPhotoId();
+function getPhoto({ width, height }, photoIds) {
+  const photoId = getNewPhotoId(photoIds);
   const src = getPhotoSrc(width, height, photoId);
 
-  photo = {
+  return {
     id: photoId,
     width,
     height,
     src
   };
-  return photo;
 }
 
-function getNewPhotoId() {
-  return Math.floor(Math.random() * 100);
+function getNewPhotoId(photoIds) {
+  return photoIds[Math.floor(Math.random() * photoIds.length)];
 }
 
 function getPhotoSrc(width, height, photoId) {

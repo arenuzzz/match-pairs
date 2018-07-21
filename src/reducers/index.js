@@ -7,9 +7,8 @@ import { startGame, DEFAULT_STATE, revealTile } from "../utils/matchPairs";
 const game = (state = DEFAULT_STATE, action) => {
   switch (action.type) {
     case START_GAME: {
-      const { rows, cols } = action;
-
-      return startGame({ rows, cols });
+      const { rows, cols, photoIds } = action;
+      return startGame({ rows, cols, photoIds });
     }
     case REVEAL_TILE: {
       return revealTile(state, action.tileId);

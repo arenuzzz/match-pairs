@@ -19,6 +19,7 @@ export const startGame = params => {
     cols: params.cols,
     board: generateBoard(params)
   });
+
   return game;
 };
 
@@ -26,11 +27,11 @@ export const revealTile = (game, tileId) => {
   return game;
 };
 
-function generateBoard({ rows, cols }) {
+function generateBoard({ rows, cols, photoIds }) {
   const tile = Map({ isFinded: false, isRevealed: false });
   const board = repeat(rows * cols, tile)
-    .map(tile => tile.set("photo", fromJS(setPhotoPairs(size))))
-    .sort(() => Math.random() - 0.5)
+    .map(tile => tile.set("photo", fromJS(setPhotoPairs(size, photoIds))))
+    .sort(() => Math.random() - 0.3)
     .map((tile, id) => tile.set("id", id));
   return board;
 }
