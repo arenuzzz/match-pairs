@@ -1,11 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const styles = {
-  startLink: { fontSize: "larger" }
-};
+import styles from "./StartPage.module.css";
+
 export default () => (
-  <Link to="/game" style={styles.startLink}>
+  <Link to="/game" className={styles.startLink}>
     Start game
   </Link>
 );

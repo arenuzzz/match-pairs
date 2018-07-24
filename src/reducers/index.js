@@ -1,22 +1,41 @@
 import { combineReducers } from "redux-immutable";
 
-import { START_GAME, REVEAL_TILE } from "../actions";
+import {
+  START_GAME_REQUEST,
+  START_GAME_SUCCESS,
+  START_GAME_FAILURE,
+  REVEAL_TILE,
+  CLOSE_TILES
+} from "actions";
 
-import { startGame, DEFAULT_STATE, revealTile } from "../utils/matchPairs";
+import {
+  initialState,
+  startGame,
+  revealTile,
+  closeTiles
+} from "utils/matchPairs";
 
-const game = (state = DEFAULT_STATE, action) => {
+const gameReducer = (state = initialState, action) => {
   switch (action.type) {
-    case START_GAME: {
+    case START_GAME_REQUEST: {
+      return state;
+    }
+    case START_GAME_SUCCESS: {
       const { rows, cols, photoIds } = action;
-      return startGame({ rows, cols, photoIds });
+      return startGame(state, { rows, cols, photoIds });
+    }
+    case START_GAME_FAILURE: {
+      return state;
     }
     case REVEAL_TILE: {
-      return revealTile(state, action.tileId);
+      return revealTile(state, action.tileId, action.closeTiles);
     }
-
+    case CLOSE_TILES: {
+      return closeTiles(state);
+    }
     default:
       return state;
   }
 };
 
-export default combineReducers({ game });
+export default combineReducers({ game: gameReducer });

@@ -2,17 +2,19 @@
   cursor: pointer;
   user-select: none;
   display: inline-block;
-  margin: 2px;
+  margin: 6px;
   border-radius: 20%;
   background-color: rgb(160, 158, 158);
   box-shadow: 2px 2px 1px rgb(167, 165, 165);
+  transform: scale(1, 1);
 }
 
 .img {
   border-radius: inherit;
+  transform: scale(1.1, 1.1);
 }
 
-.tile_closed {
+.tile_opened {
   composes: tile;
   cursor: default;
 }

@@ -1,8 +1,8 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 
-import GamePage from "../containers/GamePage";
-import StartPage from "../components/StartPage";
+import GamePage from "pages/GamePage";
+import StartPage from "pages/StartPage";
 
 const NotFound = () => <div>NotFound</div>;
 

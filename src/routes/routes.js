@@ -1,5 +1,6 @@
 import React from "react";
-import App from "../components/App.jsx";
+
+import App from "components/App";
 
 const Home = () => <div>Home</div>;
 const NotFound = () => <div>NotFound</div>;

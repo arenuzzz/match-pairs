@@ -1,11 +1,15 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import Root from "./components/Root";
+import { render } from "react-dom";
+import Root from "components/Root";
 
-ReactDOM.render(<Root />, document.getElementById("root"));
+const renderApp = () => {
+  render(<Root />, document.getElementById("root"));
+};
+
+renderApp();
 
 if (module.hot) {
-  module.hot.accept("./components/Root.jsx", () => {
-    ReactDOM.render(<Root />, document.getElementById("root"));
+  module.hot.accept("components/Root", () => {
+    renderApp();
   });
 }

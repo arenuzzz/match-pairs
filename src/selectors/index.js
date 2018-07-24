@@ -1,10 +1,16 @@
 import { createSelector } from "reselect";
-import { fromJS, Map, List } from "immutable";
+import { List } from "immutable";
 
 export const getGame = state => state.get("game");
 export const getGameBoard = createSelector(getGame, game => game.get("board"));
 export const getGameCols = createSelector(getGame, game => game.get("cols"));
 export const getGameRows = createSelector(getGame, game => game.get("rows"));
+export const getGameMovesCount = createSelector(getGame, game =>
+  game.get("moves")
+);
+export const getGameLocked = createSelector(getGame, game =>
+  game.get("isLocked")
+);
 
 export const getGameBoardView = createSelector(
   getGameBoard,

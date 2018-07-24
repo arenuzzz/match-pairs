@@ -5,17 +5,16 @@ export function setPhotoPairs(size, photoIds) {
   if (duplicate) {
     duplicate = !duplicate;
     photo = getPhoto(size, photoIds);
-
     return photo;
   } else {
     duplicate = !duplicate;
-
     return photo;
   }
 }
 
 function getPhoto({ width, height }, photoIds) {
   const photoId = getNewPhotoId(photoIds);
+  // console.log(photoId);
   const src = getPhotoSrc(width, height, photoId);
 
   return {
@@ -27,7 +26,7 @@ function getPhoto({ width, height }, photoIds) {
 }
 
 function getNewPhotoId(photoIds) {
-  return photoIds[Math.floor(Math.random() * photoIds.length)];
+  return photoIds[Math.floor(Math.random() * 300)];
 }
 
 function getPhotoSrc(width, height, photoId) {

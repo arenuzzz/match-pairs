@@ -1,11 +1,10 @@
 import React from "react";
 
-import Tile from "./Tile";
+import Tile from "components/Tile";
 
 import styles from "./Board.module.css";
 
-export default props => {
-  const { board } = props;
+export default ({ board, onReveal, isLocked }) => {
   return (
     <div className={styles.base}>
       {board.map((row, idx) => (
@@ -17,6 +16,10 @@ export default props => {
               photoSrc={tile.getIn(["photo", "src"])}
               width={tile.getIn(["photo", "width"])}
               height={tile.getIn(["photo", "height"])}
+              isPairFound={tile.get("isPairFound")}
+              isRevealed={tile.get("isRevealed")}
+              onReveal={onReveal}
+              isLocked={isLocked}
             />
           ))}
         </div>
