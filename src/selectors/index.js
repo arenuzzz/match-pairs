@@ -5,6 +5,8 @@ export const getGame = state => state.get("game");
 export const getGameBoard = createSelector(getGame, game => game.get("board"));
 export const getGameCols = createSelector(getGame, game => game.get("cols"));
 export const getGameRows = createSelector(getGame, game => game.get("rows"));
+export const getGameTime = createSelector(getGame, game => game.get("time"));
+
 export const getGameMovesCount = createSelector(getGame, game =>
   game.get("moves")
 );
@@ -27,3 +29,4 @@ export const getGameBoardView = createSelector(
     }, new List());
   }
 );
+

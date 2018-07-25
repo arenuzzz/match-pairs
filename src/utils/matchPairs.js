@@ -6,8 +6,9 @@ export const initialState = fromJS({
   rows: 2,
   cols: 2,
   board: [],
-  isLocked: false,
+  isLocked: true,
   lastTileId: null,
+  time: 0,
   moves: 0
 });
 
@@ -20,7 +21,12 @@ export const startGame = (game, params) => {
   return game
     .set("rows", params.rows)
     .set("cols", params.cols)
+    .set("time", params.minutes)
     .set("board", generateBoard(params));
+};
+
+export const finishGame = game => {
+  return game.set("isLocked", true);
 };
 
 export const revealTile = (game, tileId, closeTiles) => {

@@ -12,9 +12,10 @@
 .img {
   border-radius: inherit;
   transform: scale(1.1, 1.1);
+  cursor: not-allowed;
 }
 
-.tile_opened {
+.lockedTile {
   composes: tile;
-  cursor: default;
+  cursor: not-allowed;
 }

@@ -10,7 +10,7 @@ export default store => next => async action => {
   }
 
   const { types } = callAPI;
-  const { rows, cols } = action;
+  const { rows, cols, minutes } = action;
   const [REQUEST, SUCCESS, FAILURE] = types;
 
   const actionWith = data => {
@@ -29,7 +29,7 @@ export default store => next => async action => {
 
   try {
     const photoIds = await getPhotoListApi();
-    next(actionWith({ type: SUCCESS, rows, cols, photoIds }));
+    next(actionWith({ type: SUCCESS, rows, cols, minutes, photoIds }));
   } catch (error) {
     next(actionWith({ type: FAILURE, error }));
   }

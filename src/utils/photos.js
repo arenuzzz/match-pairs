@@ -14,7 +14,6 @@ export function setPhotoPairs(size, photoIds) {
 
 function getPhoto({ width, height }, photoIds) {
   const photoId = getNewPhotoId(photoIds);
-  // console.log(photoId);
   const src = getPhotoSrc(width, height, photoId);
 
   return {
